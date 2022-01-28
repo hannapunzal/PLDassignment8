@@ -15,5 +15,36 @@ def welcome():
     print("\n\033[5;49;33mGuess the 3 numbers (0-9) to win the jackpot!\33[0m") #yellow 
     time.sleep(3) 
     print("\n\033[5;49;36mLet's get you started!\33[0m")
+    time.sleep(.5)
+
+def lotteryGame():
+    lotteryGame = True
+    while lotteryGame:
+        firstNumber = int(input("\n\033[5;49;36mEnter first number\33[0m: ")) #\n\033[5;49;36m closest shade
+        secondNumber = int(input("\033[5;49;36mEntersecond number\33[0m: "))
+        thirdNumber = int(input("\033[5;49;36mEnter third number\33[0m: "))
+
+        systemFirstNum = random.randint(0,9)
+        systemSecondNum = random.randint(0,9)
+        systemThirdNum = random.randint(0,9)
+    
+        askLottery = firstNumber, secondNumber, thirdNumber
+        systemNumber = (systemFirstNum, systemSecondNum, systemThirdNum)
+        time.sleep(1.25)
+        if  askLottery == systemFirstNum and systemSecondNum and systemThirdNum:
+            print(f"\n[0;49;32mCongratulations, {name}! You got the jackpot! The Winning numbers are: {systemNumber}.")
+        else:
+            print(f"\n\033[5;49;31mSorry, {name}. You lost. The\33[0m \033[0;49;32mWinning Numbers\33[0m \033[5;49;31mare\33[0m:\n\033[0;49;32m{systemNumber}\33[0m")        
+        time.sleep(2.5)
+        askAnotherRound = input("\n\033[5;49;33mIf you wish to play again, enter '\33[0m\033[5;49;36my\33[0m\033[5;49;33m'. If not, enter '\33[0m\033[5;49;36mn\33[0m\033[5;49;33m'. Thank you!\33[0m\n").lower()
+        while True:
+            if askAnotherRound == "y":
+                lotteryGame = True
+                break
+            elif askAnotherRound == "n":
+                lotteryGame = False
+                print(f"\033[5;49;36mThank you for playing HF's Merry Lottery!\33[0m")
+                break
 
 welcome()
+lotteryGame()
